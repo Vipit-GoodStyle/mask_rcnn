@@ -1,4 +1,4 @@
-git add README.md"""
+"""
 Mask R-CNN
 Base Configurations class.
 
