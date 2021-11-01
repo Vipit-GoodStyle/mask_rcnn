@@ -210,6 +210,20 @@ class Config(object):
     # Gradient norm clipping
     GRADIENT_CLIP_NORM = 5.0
 
+    MODEL_DIR = '/content/drive/MyDrive/FGVC6/models/final/'
+    MODEL_PATH = '/content/drive/MyDrive/FGVC6/models/final/mask_rcnn_fashion_0025.h5'
+
+    LABEL_NAMES = ['shirt, blouse', 'top, t-shirt, sweatshirt', 'sweater', 'cardigan', 'jacket', 'vest', 'pants',
+                   'shorts',
+                   'skirt', 'coat', 'dress', 'jumpsuit', 'cape', 'glasses', 'hat',
+                   'headband, head covering, hair accessory',
+                   'tie', 'glove', 'watch', 'belt', 'leg warmer', 'tights, stockings', 'sock', 'shoe', 'bag, wallet',
+                   'scarf', 'umbrella',
+                   'hood', 'collar', 'lapel', 'epaulette', 'sleeve', 'pocket', 'neckline', 'buckle', 'zipper',
+                   'applique',
+                   'bead', 'bow', 'flower',
+                   'fringe', 'ribbon', 'rivet', 'ruffle', 'sequin', 'tassel']
+
     def __init__(self):
         """Set values of computed attributes."""
         # Effective batch size

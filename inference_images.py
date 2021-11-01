@@ -46,20 +46,8 @@ args = vars(ap.parse_args())
 input_image_dir = args["input"]
 output_image_dir = args["output"]
 
-model_dir = '/content/drive/MyDrive/FGVC6/models/final/'
-model_path = '/content/drive/MyDrive/FGVC6/models/final/mask_rcnn_fashion_0025.h5'
-
-label_names = ['shirt, blouse', 'top, t-shirt, sweatshirt', 'sweater', 'cardigan', 'jacket', 'vest', 'pants', 'shorts',
-               'skirt', 'coat', 'dress', 'jumpsuit', 'cape', 'glasses', 'hat',
-               'headband, head covering, hair accessory',
-               'tie', 'glove', 'watch', 'belt', 'leg warmer', 'tights, stockings', 'sock', 'shoe', 'bag, wallet',
-               'scarf', 'umbrella',
-               'hood', 'collar', 'lapel', 'epaulette', 'sleeve', 'pocket', 'neckline', 'buckle', 'zipper', 'applique',
-               'bead', 'bow', 'flower',
-               'fringe', 'ribbon', 'rivet', 'ruffle', 'sequin', 'tassel']
-
-model = modellib.MaskRCNN(mode="inference", config=config, model_dir=model_dir)
-model.load_weights(model_path, by_name=True)
+model = modellib.MaskRCNN(mode="inference", config=config, model_dir=config.MODEL_DIR)
+model.load_weights(config.MODEL_PATH, by_name=True)
 
 
 def resize_image(image_path):
@@ -84,12 +72,12 @@ def refine_masks(masks, rois):
             rois[m, :] = [y1, x1, y2, x2]
     return masks, rois
 
+
 for filename in os.listdir(input_image_dir):
     if filename.lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp', '.gif')):
         image_path = os.path.join(input_image_dir, filename)
         print(image_path)
         img = io.imread(image_path)
-        # img = cv2.imread(image_path)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         result = model.detect([resize_image(image_path)])
         r = result[0]
@@ -106,6 +94,6 @@ for filename in os.listdir(input_image_dir):
         else:
             masks, rois = r['masks'], r['rois']
 
-        save_masked_instances(output_image_dir, img, rois, masks, r['class_ids'], ['bg'] + label_names, r['scores'],
+        save_masked_instances(output_image_dir, img, rois, masks, r['class_ids'], ['bg'] + config.LABEL_NAMES, r['scores'],
                               title='image_id',
                               figsize=(16, 16))
