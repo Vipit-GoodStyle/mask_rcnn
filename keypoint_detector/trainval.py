@@ -50,7 +50,7 @@ def train(data_loader, net, loss, optimizer, lr):
 
     metrics = []
     for i, (data, heatmaps, vismaps) in enumerate(data_loader):
-        if i % 100 == 0:
+        if i % 1000 == 0:
             print(i)
         data = data.cuda()
         heatmaps = heatmaps.cuda()

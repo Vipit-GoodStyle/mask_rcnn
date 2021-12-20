@@ -9,7 +9,7 @@ class Config:
         self.proj_path = '/content/mask_rcnn/keypoint_detector/'
         # self.data_path = self.proj_path + 'FashionAI_Keypoint_Detection/'
         self.data_path = self.proj_path + 'DATA_DIR/'
-        self.batch_size_per_gpu = 6
+        self.batch_size_per_gpu = 1
         self.workers = 1
         self.gpus = '0'  # CUDA_DEVICES
         self.base_lr = 1e-3  # learning rate
