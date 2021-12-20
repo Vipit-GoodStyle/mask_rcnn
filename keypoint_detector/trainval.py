@@ -3,22 +3,21 @@ import time
 import argparse
 import numpy as np
 import torch
-from torch.autograd import Variable
 from torch.backends import cudnn
 from torch.nn import DataParallel
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 import sys
-sys.path.append('/home/lsy/Fashion/')
 
-from src import pytorch_utils
-from src.kpda_parser import KPDA
-from src.config import Config
-from src.stage2.data_generator import DataGenerator
-from src.stage2.cascade_pyramid_network import CascadePyramidNet
-from src.stage2v9.cascade_pyramid_network_v9 import CascadePyramidNetV9
-from src.stage2.viserrloss import VisErrorLoss
-from src.lr_scheduler import LRScheduler
+#sys.path.append('/home/lsy/Fashion/')
+
+import pytorch_utils
+from kpda_parser import KPDA
+from config import Config
+from data_generator import DataGenerator
+from cascade_pyramid_network import CascadePyramidNet
+from viserrloss import VisErrorLoss
+from lr_scheduler import LRScheduler
 
 
 def print_log(epoch, lr, train_metrics, train_time, val_metrics=None, val_time=None, save_dir=None, log_mode=None):
@@ -50,9 +49,9 @@ def train(data_loader, net, loss, optimizer, lr):
 
     metrics = []
     for i, (data, heatmaps, vismaps) in enumerate(data_loader):
-        data = data.cuda(async=True)
-        heatmaps = heatmaps.cuda(async=True)
-        vismaps = vismaps.cuda(async=True)
+        data = data.cuda()
+        heatmaps = heatmaps.cuda()
+        vismaps = vismaps.cuda()
         heat_pred1, heat_pred2 = net(data)
         loss_output = loss(heatmaps, heat_pred1, heat_pred2, vismaps)
         optimizer.zero_grad()
@@ -69,9 +68,9 @@ def validate(data_loader, net, loss):
     net.eval()
     metrics = []
     for i, (data, heatmaps, vismaps) in enumerate(data_loader):
-        data = data.cuda(async=True)
-        heatmaps = heatmaps.cuda(async=True)
-        vismaps = vismaps.cuda(async=True)
+        data = data.cuda()
+        heatmaps = heatmaps.cuda()
+        vismaps = vismaps.cuda()
         heat_pred1, heat_pred2 = net(data)
         loss_output = loss(heatmaps, heat_pred1, heat_pred2, vismaps)
         metrics.append([loss_output[0].item(), loss_output[1].item(), loss_output[2].item()])

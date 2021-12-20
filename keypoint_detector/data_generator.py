@@ -4,7 +4,7 @@ import torch
 from torch.utils.data import Dataset
 import random
 
-from src.stage2.keypoint_encoder import KeypointEncoder
+from keypoint_encoder import KeypointEncoder
 
 
 class DataGenerator(Dataset):
@@ -83,8 +83,8 @@ class DataGenerator(Dataset):
 
 
 if __name__ == '__main__':
-    from src.config import Config
-    from src.kpda_parser import KPDA
+    from config import Config
+    from kpda_parser import KPDA
     from torch.utils.data import DataLoader
 
 
