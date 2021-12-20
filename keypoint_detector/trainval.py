@@ -40,6 +40,7 @@ def print_log(epoch, lr, train_metrics, train_time, val_metrics=None, val_time=N
         f.write(str2 + '\n\n')
     f.close()
 
+
 def train(data_loader, net, loss, optimizer, lr):
     start_time = time.time()
 
@@ -49,6 +50,8 @@ def train(data_loader, net, loss, optimizer, lr):
 
     metrics = []
     for i, (data, heatmaps, vismaps) in enumerate(data_loader):
+        if i % 100 == 0:
+            print(i)
         data = data.cuda()
         heatmaps = heatmaps.cuda()
         vismaps = vismaps.cuda()
