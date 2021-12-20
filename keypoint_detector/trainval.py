@@ -97,7 +97,8 @@ if __name__ == '__main__':
     # 256 pixels: SGD L1 loss starts from 1e-2, L2 loss starts from 1e-3
     # 512 pixels: SGD L1 loss starts from 1e-3, L2 loss starts from 1e-4
     base_lr = config.base_lr
-    save_dir = config.proj_path + 'checkpoints/'
+    # save_dir = config.proj_path + 'checkpoints/'
+    save_dir = config.save_dir_path
     if not os.path.exists(save_dir):
         os.mkdir(save_dir)
 

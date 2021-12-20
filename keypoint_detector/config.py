@@ -9,6 +9,7 @@ class Config:
         self.proj_path = '/content/mask_rcnn/keypoint_detector/'
         # self.data_path = self.proj_path + 'FashionAI_Keypoint_Detection/'
         self.data_path = self.proj_path + 'DATA_DIR/'
+        self.save_dir_path = '/content/drive/MyDrive/FashionAI/mymodels/original_dataset_blouse/gathierry/'
         self.batch_size_per_gpu = 1
         self.workers = 1
         self.gpus = '0'  # CUDA_DEVICES
@@ -74,5 +75,5 @@ class Config:
 
 
 if __name__ == '__main__':
-    config = Config('outwear')
+    config = Config('blouse')
     print(config.conjug)
