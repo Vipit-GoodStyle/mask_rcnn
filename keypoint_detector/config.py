@@ -1,6 +1,7 @@
 import math
 import numpy as np
 
+
 class Config:
 
     def __init__(self, clothes):
@@ -16,20 +17,24 @@ class Config:
         self.base_lr = 1e-3  # learning rate
         self.epochs = 100
 
-
         self.clothes = clothes
-        self.keypoints = {'blouse' : ['neckline_left', 'neckline_right', 'center_front', 'shoulder_left', 'shoulder_right',
-                                      'armpit_left', 'armpit_right', 'cuff_left_in', 'cuff_left_out', 'cuff_right_in',
-                                      'cuff_right_out', 'top_hem_left', 'top_hem_right'],
-                          'outwear' : ['neckline_left', 'neckline_right', 'shoulder_left', 'shoulder_right', 'armpit_left',
-                                       'armpit_right', 'waistline_left', 'waistline_right', 'cuff_left_in', 'cuff_left_out',
-                                       'cuff_right_in', 'cuff_right_out', 'top_hem_left', 'top_hem_right'],
-                          'trousers' : ['waistband_left', 'waistband_right', 'crotch', 'bottom_left_in', 'bottom_left_out',
-                                        'bottom_right_in', 'bottom_right_out'],
-                          'skirt' : ['waistband_left', 'waistband_right', 'hemline_left', 'hemline_right'],
-                          'dress' : ['neckline_left', 'neckline_right', 'center_front', 'shoulder_left', 'shoulder_right',
-                                     'armpit_left', 'armpit_right', 'waistline_left', 'waistline_right', 'cuff_left_in',
-                                     'cuff_left_out', 'cuff_right_in', 'cuff_right_out', 'hemline_left', 'hemline_right']}
+        self.keypoints = {
+            'blouse': ['neckline_left', 'neckline_right', 'center_front', 'shoulder_left', 'shoulder_right',
+                       'armpit_left', 'armpit_right', 'cuff_left_in', 'cuff_left_out', 'cuff_right_in',
+                       'cuff_right_out', 'top_hem_left', 'top_hem_right'],
+            'outwear': ['neckline_left', 'neckline_right', 'shoulder_left', 'shoulder_right', 'armpit_left',
+                        'armpit_right', 'waistline_left', 'waistline_right', 'cuff_left_in', 'cuff_left_out',
+                        'cuff_right_in', 'cuff_right_out', 'top_hem_left', 'top_hem_right'],
+            'trousers': ['waistband_left', 'waistband_center', 'waistband_right',
+                         'hip_left_out', 'knee_left_out', 'bottom_left_out',
+                         'bottom_left_in', 'knee_left_in',
+                         'crotch',
+                         'knee_right_in', 'bottom_right_in',
+                         'bottom_right_out', 'knee_right_out', 'hip_right_out'],
+            'skirt': ['waistband_left', 'waistband_right', 'hemline_left', 'hemline_right'],
+            'dress': ['neckline_left', 'neckline_right', 'center_front', 'shoulder_left', 'shoulder_right',
+                      'armpit_left', 'armpit_right', 'waistline_left', 'waistline_right', 'cuff_left_in',
+                      'cuff_left_out', 'cuff_right_in', 'cuff_right_out', 'hemline_left', 'hemline_right']}
         keypoint = self.keypoints[self.clothes]
         self.num_keypoints = len(keypoint)
         self.conjug = []
@@ -62,15 +67,15 @@ class Config:
         # if self.clothes in ['outwear', 'trousers']:
         #     self.hm_sigma = self.img_max_size / self.hm_stride / 8.
         # else:
-        self.hm_sigma = self.img_max_size / self.hm_stride / 16. #4 #16 for 256 size
+        self.hm_sigma = self.img_max_size / self.hm_stride / 16.  # 4 #16 for 256 size
         self.hm_alpha = 100.
 
-        lrschedule = {'blouse' : [16, 26, 42],
-                      'outwear' : [15, 20, 26],
-                      'trousers' : [18, 25, 36],
-                      'skirt' : [26, 32, 39],
-                      'dress' : [30, 34, 31]
-                     }
+        lrschedule = {'blouse': [16, 26, 42],
+                      'outwear': [15, 20, 26],
+                      'trousers': [18, 25, 36],
+                      'skirt': [26, 32, 39],
+                      'dress': [30, 34, 31]
+                      }
         self.lrschedule = lrschedule[clothes]
 
 
