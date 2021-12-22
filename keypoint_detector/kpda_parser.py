@@ -15,9 +15,9 @@ class KPDA():
         #     anno_df = pd.read_csv(data_dir + 'fashionAI_key_points_test_b_answer_20180426.csv')
         #     anno_df['image_path'] = data_dir + anno_df['image_id']
         else:
-            data_dir0 = data_dir + 'train/'
-            anno_df0 = pd.read_csv(data_dir0 + 'Annotations/train_split.csv')
-            anno_df0['image_path'] = data_dir0 + anno_df0['image_id']
+            data_dir_train = data_dir + 'train/'
+            anno_df0 = pd.read_csv(data_dir_train + 'Annotations/train.csv')
+            anno_df0['image_path'] = data_dir_train + anno_df0['image_id']
             #data_dir1 = data_dir + 'r1_train/'
            # anno_df1 = pd.read_csv(data_dir1 + 'Annotations/train.csv')
            # anno_df1['image_path'] = data_dir1 + anno_df1['image_id']
@@ -26,9 +26,9 @@ class KPDA():
            # anno_df2['image_path'] = data_dir2 + anno_df2['image_id']
             # anno_df = pd.concat([anno_df0, anno_df1, anno_df2])
 
-            data_dir3 = data_dir + 'train/'
-            anno_df3 = pd.read_csv(data_dir3 + 'Annotations/val_split.csv')
-            anno_df3['image_path'] = data_dir3 + anno_df3['image_id']
+            data_dir_validation = data_dir + 'validation/'
+            anno_df3 = pd.read_csv(data_dir_validation + 'Annotations/validation.csv')
+            anno_df3['image_path'] = data_dir_validation + anno_df3['image_id']
 
             #anno_df3_train, anno_df3_val = train_test_split(anno_df3, test_size=0.2, random_state=42)
             if train_val == 'train':
