@@ -136,6 +136,6 @@ class CascadePyramidNet(nn.Module):
 if __name__ == '__main__':
     from torch.autograd import Variable
     from src.config import Config
-    config = Config('outwear')
+    config = Config('trousers')
     net = CascadePyramidNet(config)
     fms = net(Variable(torch.randn(1, 3, 512, 512)))

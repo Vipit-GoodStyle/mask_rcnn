@@ -88,7 +88,7 @@ if __name__ == '__main__':
     from torch.utils.data import DataLoader
 
 
-    config = Config('dress')
+    config = Config('trousers')
     train_data = KPDA(config, config.data_path, 'train')
 
     data_dataset = DataGenerator(config, train_data, phase='train')

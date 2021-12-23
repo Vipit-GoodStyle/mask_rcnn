@@ -94,7 +94,7 @@ if __name__ == '__main__':
     from tqdm import tqdm
     import cv2
     from src.config import Config
-    config = Config('dress')
+    config = Config('trousers')
     kpda = KPDA(config, '/home/storage/lsy/fashion/FashionAI_Keypoint_Detection/', 'train')
     print(kpda.anno_df)
 

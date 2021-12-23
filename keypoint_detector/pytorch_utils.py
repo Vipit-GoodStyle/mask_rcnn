@@ -230,7 +230,6 @@ def combine32(splits, z, h, w):
         splits[0].shape[3],
         splits[0].shape[4]), np.float32)
 
-    
     z_width = int(np.ceil(float(z) / 2))
     h_width = int(np.ceil(float(h) / 4))
     w_width = int(np.ceil(float(w) / 4))
