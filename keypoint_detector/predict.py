@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
     config = Config(args.clothes)
     n_gpu = pytorch_utils.setgpu(args.gpu)
-    test_kpda = KPDA(config, config.data_path, 'validation')
+    test_kpda = KPDA(config, config.data_path, 'test')
     print('Test sample number: %d' % test_kpda.size())
     df = data_frame_template()
     net = CascadePyramidNet(config)
