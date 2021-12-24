@@ -21,12 +21,14 @@ from keypoint_encoder import KeypointEncoder
 
 
 def data_frame_template():
-    df = pd.DataFrame(columns=['image_id','image_category','neckline_left','neckline_right','center_front','shoulder_left',
-                               'shoulder_right','armpit_left','armpit_right','waistline_left','waistline_right',
-                               'cuff_left_in','cuff_left_out','cuff_right_in','cuff_right_out','top_hem_left',
-                               'top_hem_right','waistband_left','waistband_right','hemline_left','hemline_right',
-                               'crotch','bottom_left_in','bottom_left_out','bottom_right_in','bottom_right_out'])
+    df = pd.DataFrame(columns=['waistband_left', 'waistband_center', 'waistband_right',
+                               'hip_left_out', 'knee_left_out', 'bottom_left_out',
+                               'bottom_left_in', 'knee_left_in',
+                               'crotch',
+                               'knee_right_in', 'bottom_right_in',
+                               'bottom_right_out', 'knee_right_out', 'hip_right_out'])
     return df
+
 
 def compute_keypoints(config, img0, net, encoder, doflip=False):
     img_h, img_w, _ = img0.shape
@@ -58,17 +60,19 @@ def compute_keypoints(config, img0, net, encoder, doflip=False):
     # keypoints = np.stack([x, y, np.ones(x.shape)], axis=1).astype(np.int16)
     # return keypoints
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('-c', '--clothes', help='specify the clothing type', default='outwear')
     parser.add_argument('-g', '--gpu', help='cuda device to use', default='0')
-    parser.add_argument('-m', '--model', help='specify the model', default=None)  # config.proj_path + 'checkpoints/outwear_036_lgtrain.ckpt'
+    parser.add_argument('-m', '--model', help='specify the model',
+                        default=None)  # config.proj_path + 'checkpoints/outwear_036_lgtrain.ckpt'
     parser.add_argument('-v', '--visual', help='whether visualize result', default=False)
     args = parser.parse_args(sys.argv[1:])
 
     config = Config(args.clothes)
     n_gpu = pytorch_utils.setgpu(args.gpu)
-    test_kpda = KPDA(config, config.data_path, 'test')
+    test_kpda = KPDA(config, config.data_path, 'validation')
     print('Test sample number: %d' % test_kpda.size())
     df = data_frame_template()
     net = CascadePyramidNet(config)
@@ -89,7 +93,8 @@ if __name__ == '__main__':
         with torch.no_grad():
             hm_pred = compute_keypoints(config, img0, net, encoder)
             hm_pred_flip = compute_keypoints(config, img0_flip, net, encoder, doflip=True)
-        x, y = encoder.decode_np(hm_pred+hm_pred_flip, scale, config.hm_stride, (img_w/2, img_h/2), method='maxoffset')
+        x, y = encoder.decode_np(hm_pred + hm_pred_flip, scale, config.hm_stride, (img_w / 2, img_h / 2),
+                                 method='maxoffset')
         keypoints = np.stack([x, y, np.ones(x.shape)], axis=1).astype(np.int16)
 
         # keypoints = compute_keypoints(config, img0, net, encoder)
@@ -103,7 +108,7 @@ if __name__ == '__main__':
         df.at[idx, 'image_id'] = row['image_id']
         df.at[idx, 'image_category'] = row['image_category']
         for k, kpt_name in enumerate(config.keypoints[config.clothes]):
-            df.at[idx, kpt_name] = str(keypoints[k,0])+'_'+str(keypoints[k,1])+'_1'
+            df.at[idx, kpt_name] = str(keypoints[k, 0]) + '_' + str(keypoints[k, 1]) + '_1'
 
         if args.visual:
             kp_img = draw_keypoints(img0, keypoints)
@@ -111,4 +116,4 @@ if __name__ == '__main__':
 
     df.fillna('-1_-1_-1', inplace=True)
     print(df.head(5))
-    df.to_csv(config.proj_path+'kp_predictions/'+config.clothes+'.csv', index=False)
+    df.to_csv(config.proj_path + 'kp_predictions/' + config.clothes + '.csv', index=False)
