@@ -2,9 +2,9 @@ import cv2
 import pandas as pd
 import numpy as np
 
-from src.config import Config
-from src.kpda_parser import KPDA
-from src.utils import draw_keypoint_with_caption
+from config import Config
+from kpda_parser import KPDA
+from utils import draw_keypoint_with_caption
 
 
 if __name__ == '__main__':

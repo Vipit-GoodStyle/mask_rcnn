@@ -12,14 +12,13 @@ import os
 import argparse
 import sys
 
-from src import pytorch_utils
-from src.config import Config
-from src.kpda_parser import KPDA
-from src.stage2.cascade_pyramid_network import CascadePyramidNet
-from src.stage2v9.cascade_pyramid_network_v9 import CascadePyramidNetV9
-from src.utils import draw_heatmap, draw_keypoints
-from src.stage2.keypoint_encoder import KeypointEncoder
-from src.utils import normalized_error
+import pytorch_utils
+from config import Config
+from kpda_parser import KPDA
+from cascade_pyramid_network import CascadePyramidNet
+from utils import draw_heatmap, draw_keypoints
+from keypoint_encoder import KeypointEncoder
+from utils import normalized_error
 
 
 def compute_keypoints(config, img0, net, encoder, doflip=False):

@@ -2,8 +2,6 @@ import sys
 import os
 import numpy as np
 import torch
-
-
 def getFreeId():
     import pynvml 
 
@@ -24,7 +22,6 @@ def getFreeId():
         gpus = gpus+str(g)+','
     gpus = gpus[:-1]
     return gpus
-
 
 def setgpu(gpuinput):
     freeids = getFreeId()
@@ -230,6 +227,7 @@ def combine32(splits, z, h, w):
         splits[0].shape[3],
         splits[0].shape[4]), np.float32)
 
+    
     z_width = int(np.ceil(float(z) / 2))
     h_width = int(np.ceil(float(h) / 4))
     w_width = int(np.ceil(float(w) / 4))
