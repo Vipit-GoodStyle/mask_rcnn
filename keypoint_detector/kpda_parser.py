@@ -7,9 +7,12 @@ class KPDA():
     def __init__(self, config, data_dir, train_val):
         self.config = config
         if train_val == 'test':
-            data_dir += 'r2_test_b/'
-            anno_df = pd.read_csv(data_dir + 'test.csv')
-            anno_df['image_path'] = data_dir + anno_df['image_id']
+            # data_dir += 'r2_test_b/'
+            # anno_df = pd.read_csv(data_dir + 'test.csv')
+            # anno_df['image_path'] = data_dir + anno_df['image_id']
+            data_dir_test = data_dir + 'test/'
+            anno_df0 = pd.read_csv(data_dir_test + 'Annotations/test.csv')
+            anno_df0['image_path'] = data_dir_test + anno_df0['image_id']
         # elif train_val == 'val':
         #     data_dir += 'r1_test_b/'
         #     anno_df = pd.read_csv(data_dir + 'fashionAI_key_points_test_b_answer_20180426.csv')
