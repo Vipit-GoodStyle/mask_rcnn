@@ -112,7 +112,7 @@ if __name__ == '__main__':
 
         if args.visual:
             kp_img = draw_keypoints(img0, keypoints)
-            cv2.imwrite(config.proj_path + '/tmp/{0}{1}.png'.format(config.clothes, idx), kp_img)
+            cv2.imwrite(config.proj_path + '/predict_image/{0}{1}.png'.format(config.clothes, idx), kp_img)
 
     df.fillna('-1_-1_-1', inplace=True)
     print(df.head(5))
