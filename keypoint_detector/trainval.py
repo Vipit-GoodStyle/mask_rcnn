@@ -116,7 +116,8 @@ if __name__ == '__main__':
     if args.resume is not None:
         checkpoint = torch.load(args.resume)
         start_epoch = checkpoint['epoch'] + 1
-        lr = checkpoint['lr']
+        # lr = checkpoint['lr']
+        lr = base_lr
         best_val_loss = checkpoint['best_val_loss']
         net.load_state_dict(checkpoint['state_dict'])
         log_mode = 'a'
