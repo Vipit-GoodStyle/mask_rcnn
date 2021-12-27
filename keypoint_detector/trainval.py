@@ -83,7 +83,7 @@ def validate(data_loader, net, loss):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('-c', '--clothes', help='specify the clothing type', default='outwear')
+    parser.add_argument('-c', '--clothes', help='specify the clothing type', default='trousers')
     parser.add_argument('-r', '--resume', help='specify the checkpoint', default=None)
     args = parser.parse_args(sys.argv[1:])
     print('Training ' + args.clothes)
@@ -151,19 +151,19 @@ if __name__ == '__main__':
 
         val_loss = np.mean(val_metrics[:, 0])
         lr = lrs.update_by_rule(val_loss)
-        if val_loss < best_val_loss or epoch%10 == 0 or lr is None:
-            if val_loss < best_val_loss:
-                best_val_loss = val_loss
-            state_dict = net.module.state_dict()
-            for key in state_dict.keys():
-                state_dict[key] = state_dict[key].cpu()
-            torch.save({
-                'epoch': epoch,
-                'save_dir': save_dir,
-                'state_dict': state_dict,
-                'lr': lr,
-                'best_val_loss': best_val_loss},
-                os.path.join(save_dir, 'kpt_'+config.clothes+'_%03d.ckpt' % epoch))
+        # if val_loss < best_val_loss or epoch%10 == 0 or lr is None:
+        #    if val_loss < best_val_loss:
+        best_val_loss = val_loss
+        state_dict = net.module.state_dict()
+        for key in state_dict.keys():
+            state_dict[key] = state_dict[key].cpu()
+        torch.save({
+            'epoch': epoch,
+            'save_dir': save_dir,
+            'state_dict': state_dict,
+            'lr': lr,
+            'best_val_loss': best_val_loss},
+            os.path.join(save_dir, 'kpt_'+config.clothes+'_%03d.ckpt' % epoch))
 
         if lr is None:
             print('Training is early-stopped')

@@ -72,7 +72,7 @@ class Config:
 
         lrschedule = {'blouse': [16, 26, 42],
                       'outwear': [15, 20, 26],
-                      'trousers': [18, 25, 36],
+                      'trousers': [10, 20, 25],
                       'skirt': [26, 32, 39],
                       'dress': [30, 34, 31]
                       }
