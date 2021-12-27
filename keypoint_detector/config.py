@@ -11,7 +11,7 @@ class Config:
         # self.data_path = self.proj_path + 'FashionAI_Keypoint_Detection/'
         self.data_path = self.proj_path + 'DATA_DIR/'
         # self.save_dir_path = '/content/drive/MyDrive/FashionAI/mymodels/trousers_deepfashion2/gathierry_network/'
-        self.save_dir_path = '/content/drive/MyDrive/FashionAI/mymodels/faster_test_models/'
+        self.save_dir_path = '/content/drive/MyDrive/FashionAI/mymodels/trousers_deepfashion2/gathierry_network_14_keypoints/'
         self.batch_size_per_gpu = 1
         self.workers = 1
         self.gpus = '0'  # CUDA_DEVICES
