@@ -141,7 +141,7 @@ if __name__ == '__main__':
                             collate_fn=val_dataset.collate_fn,
                             pin_memory=True)
     optimizer = torch.optim.SGD(net.parameters(), lr, momentum=0.9, weight_decay=1e-4)
-    lrs = LRScheduler(lr, patience=3, factor=0.1, min_lr=0.01*lr, best_loss=best_val_loss)
+    # lrs = LRScheduler(lr, patience=3, factor=0.1, min_lr=0.01*lr, best_loss=best_val_loss)
     for epoch in range(start_epoch, epochs + 1):
         train_metrics, train_time = train(train_loader, net, loss, optimizer, lr)
         with torch.no_grad():
@@ -150,7 +150,7 @@ if __name__ == '__main__':
         print_log(epoch, lr, train_metrics, train_time, val_metrics, val_time, save_dir=save_dir, log_mode=log_mode)
 
         val_loss = np.mean(val_metrics[:, 0])
-        lr = lrs.update_by_rule(val_loss)
+        # lr = lrs.update_by_rule(val_loss)
         # if val_loss < best_val_loss or epoch%10 == 0 or lr is None:
         #    if val_loss < best_val_loss:
         best_val_loss = val_loss
