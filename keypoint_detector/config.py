@@ -15,7 +15,7 @@ class Config:
         self.batch_size_per_gpu = 1
         self.workers = 1
         self.gpus = '0'  # CUDA_DEVICES
-        self.base_lr = 1e-3  # learning rate
+        self.base_lr = 1e-4  # learning rate
         self.epochs = 100
 
         self.clothes = clothes
