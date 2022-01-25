@@ -94,7 +94,7 @@ class DataGenerator(object):
         '''
         # Todo: check if category legal
         # self.train_img_path = "data/train"
-        self.train_img_path = "/content/FashionKeypointDetector/data/train"
+        self.train_img_path = "../../data/train"
 
         # read into dataframe
         xpd = pd.read_csv(self.annfile)
