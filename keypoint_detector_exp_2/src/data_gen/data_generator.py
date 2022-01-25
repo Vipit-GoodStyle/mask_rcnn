@@ -54,7 +54,12 @@ class DataGenerator(object):
             count = 0
             for _index, _row in xdf.iterrows():
                 xindex = count % batchSize
-                xinput, xhmap = self._prcoess_img(_row, inputSize, rotateFlag, flipFlag, cropFlag, nobgFlag=True)
+
+                try:
+                    xinput, xhmap = self._prcoess_img(_row, inputSize, rotateFlag, flipFlag, cropFlag, nobgFlag=True)
+
+                except Exception:
+                    continue
                 xmask = generate_input_mask(_row['image_category'],
                                             (targetHeight, targetWidth, getKpNum(self.category)))
 
@@ -88,7 +93,8 @@ class DataGenerator(object):
         Load annotations from train.csv
         '''
         # Todo: check if category legal
-        self.train_img_path = "data/train"
+        # self.train_img_path = "data/train"
+        self.train_img_path = "/content/FashionKeypointDetector/data/train"
 
         # read into dataframe
         xpd = pd.read_csv(self.annfile)

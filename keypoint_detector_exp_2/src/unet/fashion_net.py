@@ -34,16 +34,16 @@ class FashionNet(object):
             for layer in self.model.layers:
                 print (layer.name, layer.trainable)
 
-    def train(self, category, batchSize=8, epochs=20, lrschedule=False):
-        trainDt = DataGenerator(category, os.path.join("../../data/train/Annotations", "train_split.csv"))
+    def train(self, category, batchSize=1, epochs=100, lrschedule=False):
+        trainDt = DataGenerator(category, os.path.join("../../data/train/Annotations", "train.csv"))
         trainGen = trainDt.generator_with_mask_ohem( graph=tf.get_default_graph(), kerasModel=self.model,
                                     batchSize=batchSize, inputSize=(self.inputHeight, self.inputWidth),
                                     nStackNum=self.nStackNum, flipFlag=False, cropFlag=False)
 
         normalizedErrorCallBack = NormalizedErrorCallBack("../../trained_models/", category, True)
 
-        csvlogger = CSVLogger( os.path.join(normalizedErrorCallBack.get_folder_path(),
-                               "csv_train_"+self.modelName+"_"+str(datetime.datetime.now().strftime('%H:%M'))+".csv"))
+        csvlogger = CSVLogger(os.path.join(normalizedErrorCallBack.get_folder_path(),
+                              "csv_train_"+self.modelName+"_"+str(datetime.datetime.now().strftime('%H:%M'))+".csv"))
 
         xcallbacks = [normalizedErrorCallBack, csvlogger]
 
@@ -53,7 +53,7 @@ class FashionNet(object):
     def load_model(self, netWeightFile):
         self.model = load_model(netWeightFile, custom_objects={'euclidean_loss': euclidean_loss, 'Scale': Scale})
 
-    def resume_train(self, category, pretrainModel, modelName, initEpoch, batchSize=8, epochs=20):
+    def resume_train(self, category, pretrainModel, modelName, initEpoch, batchSize=1, epochs=100):
         self.modelName = modelName
         self.load_model(pretrainModel)
         refineNetflag = True
@@ -61,7 +61,7 @@ class FashionNet(object):
 
         modelPath = os.path.dirname(pretrainModel)
 
-        trainDt = DataGenerator(category, os.path.join("../../data/train/Annotations", "train_split.csv"))
+        trainDt = DataGenerator(category, os.path.join("../../data/train/Annotations", "train.csv"))
         trainGen = trainDt.generator_with_mask_ohem(graph=tf.get_default_graph(), kerasModel=self.model,
                                                     batchSize=batchSize, inputSize=(self.inputHeight, self.inputWidth),
                                                     nStackNum=self.nStackNum, flipFlag=False, cropFlag=False)
