@@ -6,8 +6,8 @@ from keras.optimizers import Adam, SGD
 from keras import backend as K
 import keras
 
-def Res101RefineNetMaskV3(n_classes, inputHeight, inputWidth, nStackNum):
-    model = build_resnet101_stack_mask_v3(inputHeight, inputWidth, n_classes, nStackNum)
+def Res101RefineNetMaskV3(n_classes, inputHeight, inputWidth, nStackNum, loadWeights=False):
+    model = build_resnet101_stack_mask_v3(inputHeight, inputWidth, n_classes, nStackNum, loadWeights=loadWeights)
     return model
 
 def euclidean_loss(x, y):
@@ -17,13 +17,13 @@ def apply_mask_to_output(output, mask):
     output_with_mask = keras.layers.multiply([output, mask])
     return output_with_mask
 
-def build_resnet101_stack_mask_v3(inputHeight, inputWidth, n_classes, nStack):
+def build_resnet101_stack_mask_v3(inputHeight, inputWidth, n_classes, nStack, loadWeights=False):
 
     input_mask = Input(shape=(inputHeight//2, inputHeight//2, n_classes), name='mask')
     input_ohem_mask = Input(shape=(inputHeight//2, inputHeight//2, n_classes), name='ohem_mask')
 
     # backbone network
-    input_image, lf2x,lf4x, lf8x, lf16x = load_backbone_res101net(inputHeight, inputWidth)
+    input_image, lf2x,lf4x, lf8x, lf16x = load_backbone_res101net(inputHeight, inputWidth, loadWeights=loadWeights)
 
     # global net
     g8x, g4x, g2x = create_global_net_dilated((lf2x, lf4x, lf8x, lf16x), n_classes)

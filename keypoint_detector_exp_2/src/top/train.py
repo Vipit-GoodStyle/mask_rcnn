@@ -20,6 +20,7 @@ if __name__ == "__main__":
     parser.add_argument("--lrdecay", default=False, type=bool,  help="lr decay or not")
     parser.add_argument("--resumeModel", help="start point to retrain")
     parser.add_argument("--initEpoch", type=int, help="epoch to resume")
+    parser.add_argument("--loadWeights", action='store_true', default=False)
 
 
     args = parser.parse_args()

@@ -282,6 +282,16 @@ class Evaluation(object):
             else:
                 distance = 1e6
             return distance
+        elif category in ['shorts']:
+            armpit_left_index  = get_kp_index_from_allkeys('W1')
+            armpit_right_index = get_kp_index_from_allkeys('W5')
+            ##armpit_left armpit_right'
+            if gtKp[armpit_left_index].visibility != -1 and gtKp[armpit_right_index].visibility != -1:
+                distance = KpAnno.calcDistance(gtKp[armpit_left_index], gtKp[armpit_right_index])
+            else:
+                distance = 1e6
+            return distance
+
         else:
             assert (0), category + " not implemented in _get_normized_distance"
 

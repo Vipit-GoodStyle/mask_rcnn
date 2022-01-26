@@ -18,21 +18,23 @@ import tensorflow as tf
 
 class FashionNet(object):
 
-    def __init__(self, inputHeight, inputWidth, nClasses):
+    def __init__(self, inputHeight, inputWidth, nClasses, loadResNetWeights=False):
         self.inputWidth = inputWidth
         self.inputHeight = inputHeight
         self.nClass = nClasses
+        self.loadResNetWeights = loadResNetWeights
 
     def build_model(self, modelName='v2', show=False):
         self.modelName = modelName
-        self.model = Res101RefineNetMaskV3(self.nClass, self.inputHeight, self.inputWidth, nStackNum=2)
+        self.model = Res101RefineNetMaskV3(self.nClass, self.inputHeight, self.inputWidth, nStackNum=2, loadWeights=self.loadResNetWeights)
         self.nStackNum = 2
+
 
         # show model summary and layer name
         if show:
             self.model.summary()
             for layer in self.model.layers:
-                print (layer.name, layer.trainable)
+                print(layer.name, layer.trainable)
 
     def train(self, category, batchSize=1, epochs=100, lrschedule=False):
         trainDt = DataGenerator(category, os.path.join("../../data/train/Annotations", "train.csv"))
