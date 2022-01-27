@@ -263,9 +263,9 @@ def load_backbone_res101net(inputHeight, inputWidth, loadWeights=False):
     xresnet = ResNet101(weights='imagenet', include_top=False, input_shape=(inputHeight, inputWidth, 3))
 
     if loadWeights:
-        weigths_path = "trained_models/finetuned_resnet101_weights_tf.h5"
+        weigths_path = "../../trained_models/finetuned_resnet101_weights_tf.h5"
     else:
-        weigths_path = "trained_models/resnet101_weights_tf.h5"
+        weigths_path = "../../trained_models/resnet101_weights_tf.h5"
 
     xresnet.load_weights(weigths_path, by_name=True)
 
