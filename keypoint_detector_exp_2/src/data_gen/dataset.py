@@ -50,7 +50,7 @@ SHORTS_PART_KEYS = ['W1', 'W2', 'W3', 'W4', 'W5', 'B1', 'B2', 'B3', 'B4', 'B5', 
                     'B10', 'LO1', 'LO2', 'LO3', 'LO4', 'LO5', 'LO6', 'LO7', 'RO1', 'RO2', 'RO3', 'RO4', 'RO5',
                     'RO6', 'RO7', 'LI5', 'LI6', 'LI7', 'RI5', 'RI6', 'RI7', 'C4']
 
-SHORTS_PART_FLIP_KEYS = ['W5', 'W4', 'W3', 'W2', 'W1', 'B10', 'B9', 'B8', 'B7', 'B6', 'B5', 'B4', 'B3', 'B2'
+SHORTS_PART_FLIP_KEYS = ['W5', 'W4', 'W3', 'W2', 'W1', 'B10', 'B9', 'B8', 'B7', 'B6', 'B5', 'B4', 'B3', 'B2',
                          'B1', 'RO1', 'RO2', 'RO3', 'RO4', 'RO5', 'RO6', 'RO7', 'LO1', 'LO2', 'LO3', 'LO4', 'LO5',
                          'LO6', 'LO7', 'RI5', 'RI6', 'RI7', 'LI5', 'LI6', 'LI7', 'C4']
 
