@@ -174,9 +174,9 @@ def get_kp_index_from_allkeys(kpname):
                    'hemline_left', 'hemline_right', 'crotch', 'bottom_left_in', 'bottom_left_out', 'bottom_right_in',
                    'bottom_right_out']
 
-    ALL_KP_KEYS = ['W1', 'W2', 'W3', 'W4', 'W5', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9',
-                   'B10', 'LO1', 'LO2', 'LO3', 'LO4', 'LO5', 'LO6', 'LO7', 'RO1', 'RO2', 'RO3', 'RO4', 'RO5',
-                   'RO6', 'RO7', 'LI5', 'LI6', 'LI7', 'RI5', 'RI6', 'RI7', 'C4']
+    # ALL_KP_KEYS = ['W1', 'W2', 'W3', 'W4', 'W5', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9',
+    #              'B10', 'LO1', 'LO2', 'LO3', 'LO4', 'LO5', 'LO6', 'LO7', 'RO1', 'RO2', 'RO3', 'RO4', 'RO5',
+    #             'RO6', 'RO7', 'LI5', 'LI6', 'LI7', 'RI5', 'RI6', 'RI7', 'C4']
     return ALL_KP_KEYS.index(kpname)
 
 
