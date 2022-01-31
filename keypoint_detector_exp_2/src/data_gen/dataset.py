@@ -148,10 +148,13 @@ def fill_dataframe(kplst, category, dfrow):
 
 
 def get_kp_index_from_allkeys(kpname):
-    ALL_KP_KEYS = ['neckline_left', 'neckline_right', 'center_front', 'shoulder_left', 'shoulder_right',
-                   'armpit_left', 'armpit_right', 'waistline_left', 'waistline_right', 'cuff_left_in', 'cuff_left_out',
-                   'cuff_right_in', 'cuff_right_out', 'top_hem_left', 'top_hem_right', 'waistband_left', 'waistband_right',
-                   'hemline_left', 'hemline_right', 'crotch', 'bottom_left_in', 'bottom_left_out', 'bottom_right_in', 'bottom_right_out']
+    ALL_KP_KEYS = ['waistband_left', 'waistband_right', 'crotch',  'bottom_left_in',
+                      'bottom_left_out', 'bottom_right_in', 'bottom_right_out']
+
+   # ALL_KP_KEYS = ['neckline_left', 'neckline_right', 'center_front', 'shoulder_left', 'shoulder_right',
+   #                'armpit_left', 'armpit_right', 'waistline_left', 'waistline_right', 'cuff_left_in', 'cuff_left_out',
+   #                'cuff_right_in', 'cuff_right_out', 'top_hem_left', 'top_hem_right', 'waistband_left', 'waistband_right',
+   #                'hemline_left', 'hemline_right', 'crotch', 'bottom_left_in', 'bottom_left_out', 'bottom_right_in', 'bottom_right_out']
 
     # ALL_KP_KEYS = ['W1', 'W2', 'W3', 'W4', 'W5', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9',
     #              'B10', 'LO1', 'LO2', 'LO3', 'LO4', 'LO5', 'LO6', 'LO7', 'RO1', 'RO2', 'RO3', 'RO4', 'RO5',
