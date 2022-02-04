@@ -43,6 +43,6 @@ def build_resnet101_stack_mask_v3(inputHeight, inputWidth, n_classes, nStack, lo
 
     model = Model(inputs=[input_image, input_mask, input_ohem_mask], outputs=outputs)
 
-    adam = Adam(lr=2e-3)
+    adam = Adam(lr=1e-3)
     model.compile(optimizer=adam, loss=euclidean_loss, metrics=["accuracy"])
     return model
