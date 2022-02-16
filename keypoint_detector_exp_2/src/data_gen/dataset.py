@@ -46,13 +46,15 @@ OUTWEAR_PART_FLIP_KEYS = ['neckline_right', 'neckline_left', 'shoulder_right', '
                           'armpit_right', 'armpit_left', 'waistline_right', 'waistline_left', 'cuff_right_in',
                           'cuff_right_out', 'cuff_left_in', 'cuff_left_out', 'top_hem_right', 'top_hem_left']
 
-SHORTS_PART_KEYS = ['W1', 'W2', 'W3', 'W4', 'W5', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9',
-                    'B10', 'LO1', 'LO2', 'LO3', 'LO4', 'LO5', 'LO6', 'LO7', 'RO1', 'RO2', 'RO3', 'RO4', 'RO5',
-                    'RO6', 'RO7', 'LI5', 'LI6', 'LI7', 'RI5', 'RI6', 'RI7', 'C4']
+SHORTS_PART_KEYS = ['W1', 'W2', 'W3', 'W4', 'W5', 'B1', 'B5', 'B3', 'B2', 'B4', 'B6', 'B10', 'B8', 'B7',
+                    'B9', 'C4', 'LO4', 'LO6', 'LO5', 'LO7', 'LO2', 'LO1', 'LO3', 'RO4', 'RO6', 'RO5', 'RO7', 'RO2',
+                    'RO1', 'RO3', 'LI6', 'LI5', 'LI7', 'RI6', 'RI5', 'RI7', 'C2', 'C1', 'C3', 'CL4', 'CL6', 'CL5',
+                    'CL7', 'CR4', 'CR6', 'CR5', 'CR7']
 
-SHORTS_PART_FLIP_KEYS = ['W5', 'W4', 'W3', 'W2', 'W1', 'B10', 'B9', 'B8', 'B7', 'B6', 'B5', 'B4', 'B3', 'B2',
-                         'B1', 'RO1', 'RO2', 'RO3', 'RO4', 'RO5', 'RO6', 'RO7', 'LO1', 'LO2', 'LO3', 'LO4', 'LO5',
-                         'LO6', 'LO7', 'RI5', 'RI6', 'RI7', 'LI5', 'LI6', 'LI7', 'C4']
+SHORTS_PART_FLIP_KEYS = ['W5', 'W4', 'W3', 'W2', 'W1', 'B10', 'B6', 'B8', 'B9', 'B7', 'B5', 'B1', 'B3', 'B4',
+                         'B2', 'C4', 'RO4', 'RO6', 'RO5', 'RO7', 'RO2', 'RO1', 'RO3', 'LO4', 'LO6', 'LO5', 'LO7', 'LO2',
+                         'LO1', 'LO3', 'RI6', 'RI5', 'RI7', 'LI6', 'LI5', 'LI7', 'C2', 'C1', 'C3', 'CR4', 'CR6', 'CR5',
+                         'CR7', 'CL4', 'CL6', 'CL5', 'CL7']
 
 ALL_PART_KEYS = ['neckline_left', 'neckline_right', 'center_front', 'shoulder_left', 'shoulder_right',
                  'armpit_left', 'armpit_right', 'waistline_left', 'waistline_right', 'cuff_left_in', 'cuff_left_out',
@@ -124,9 +126,10 @@ def getKpKeys(category):
                        'armpit_left', 'armpit_right', 'waistline_left', 'waistline_right', 'cuff_left_in',
                        'cuff_left_out', 'cuff_right_in', 'cuff_right_out', 'top_hem_left', 'top_hem_right']
 
-    SHORTS_KP_KEYS = ['image_id', 'W1', 'W2', 'W3', 'W4', 'W5', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9',
-                      'B10', 'LO1', 'LO2', 'LO3', 'LO4', 'LO5', 'LO6', 'LO7', 'RO1', 'RO2', 'RO3', 'RO4', 'RO5',
-                      'RO6', 'RO7', 'LI5', 'LI6', 'LI7', 'RI5', 'RI6', 'RI7', 'C4']
+    SHORTS_KP_KEYS = ['image_id', 'W1', 'W2', 'W3', 'W4', 'W5', 'B1', 'B5', 'B3', 'B2', 'B4', 'B6', 'B10', 'B8', 'B7',
+                      'B9', 'C4', 'LO4', 'LO6', 'LO5', 'LO7', 'LO2', 'LO1', 'LO3', 'RO4', 'RO6', 'RO5', 'RO7', 'RO2',
+                      'RO1', 'RO3', 'LI6', 'LI5', 'LI7', 'RI6', 'RI5', 'RI7', 'C2', 'C1', 'C3', 'CL4', 'CL6', 'CL5',
+                      'CL7', 'CR4', 'CR6', 'CR5', 'CR7']
 
     ALL_KP_KESY = ['image_id', 'neckline_left', 'neckline_right', 'center_front', 'shoulder_left', 'shoulder_right',
                    'armpit_left', 'armpit_right', 'waistline_left', 'waistline_right', 'cuff_left_in', 'cuff_left_out',
@@ -174,9 +177,10 @@ def get_kp_index_from_allkeys(kpname):
                    'hemline_left', 'hemline_right', 'crotch', 'bottom_left_in', 'bottom_left_out', 'bottom_right_in',
                    'bottom_right_out']
 
-    ALL_KP_KEYS = ['W1', 'W2', 'W3', 'W4', 'W5', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9',
-                   'B10', 'LO1', 'LO2', 'LO3', 'LO4', 'LO5', 'LO6', 'LO7', 'RO1', 'RO2', 'RO3', 'RO4', 'RO5',
-                   'RO6', 'RO7', 'LI5', 'LI6', 'LI7', 'RI5', 'RI6', 'RI7', 'C4']
+    ALL_KP_KEYS = ['W1', 'W2', 'W3', 'W4', 'W5', 'B1', 'B5', 'B3', 'B2', 'B4', 'B6', 'B10', 'B8', 'B7',
+                   'B9', 'C4', 'LO4', 'LO6', 'LO5', 'LO7', 'LO2', 'LO1', 'LO3', 'RO4', 'RO6', 'RO5', 'RO7', 'RO2',
+                   'RO1', 'RO3', 'LI6', 'LI5', 'LI7', 'RI6', 'RI5', 'RI7', 'C2', 'C1', 'C3', 'CL4', 'CL6', 'CL5',
+                   'CL7', 'CR4', 'CR6', 'CR5', 'CR7']
     return ALL_KP_KEYS.index(kpname)
 
 
