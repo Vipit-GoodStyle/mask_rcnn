@@ -96,12 +96,12 @@ def load_image_names(annfile, category):
 
 def main_test(savepath, modelpath, augmentFlag):
 
-    valfile = os.path.join(modelpath, 'val.log')
-    bestmodels = get_best_single_model(valfile)
+    #valfile = os.path.join(modelpath, 'val.log')
+    #bestmodels = get_best_single_model(valfile)
 
-    print (bestmodels, augmentFlag)
+    #print (bestmodels, augmentFlag)
 
-    xEval = Evaluation('all', bestmodels[0])
+    xEval = Evaluation('shorts', modelpath)
 
     # load images and run prediction
     testfile = os.path.join("../../data/test/", 'test.csv')
@@ -147,4 +147,3 @@ if __name__ == "__main__":
     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpuID)
 
     main_test(args.outpath, args.modelpath, args.augment)
-    submission(args.outpath)
