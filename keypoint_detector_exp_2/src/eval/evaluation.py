@@ -81,7 +81,7 @@ class Evaluation(object):
     def _net_inference_with_mask(self, imgFile, imgCategory):
         import cv2
         from data_process import normalize_image, pad_image_inference
-        assert (len(self.net.input_layers) > 1), "input layer need to more than 1"
+       # assert (len(self.net.input_layers) > 1), "input layer need to more than 1"
 
         # load image and preprocess
         img = cv2.imread(imgFile)
