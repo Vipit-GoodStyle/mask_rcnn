@@ -125,6 +125,10 @@ def main_test(savepath, modelpath, augmentFlag):
             else:
                 dtkp = xEval.predict_kp(imageName, _row['image_category'], multiOutput=True)
             xdict[_image_id] = dtkp
+            for p in dtkp:
+                print(p.x)
+                print(p.y)
+                print(p.visibility)
 
         savefile = os.path.join(savepath, category+'.pkl')
         with open(savefile, 'wb') as xfile:
