@@ -101,12 +101,13 @@ def main_test(savepath, modelpath, augmentFlag):
 
     #print (bestmodels, augmentFlag)
 
-    xEval = Evaluation('shorts', modelpath)
+    xEval = Evaluation('trousers', modelpath)
 
     # load images and run prediction
     testfile = os.path.join("../../data/test/", 'test.csv')
 
-    for category in ['skirt', 'blouse', 'trousers', 'outwear', 'dress']:
+    #for category in ['skirt', 'blouse', 'trousers', 'outwear', 'dress']:
+    for category in ['trousers']:
         xdict = dict()
         xdf = load_image_names(testfile, category)
         print (len(xdf), " images to process ", category)
